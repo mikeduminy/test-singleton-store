@@ -1,0 +1,38 @@
+{
+  "name": "singleton-store",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "tsc && vp build",
+    "preview": "vp preview",
+    "prepare": "vp config"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.12.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-redux": "^9.3.0",
+    "use-sync-external-store": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/use-sync-external-store": "^1.5.0",
+    "@vitejs/plugin-react": "^6.0.4",
+    "@vitest/browser-playwright": "^4.1.10",
+    "playwright": "^1.62.0",
+    "typescript": "~6.0.2",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest-browser-react": "^2.2.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.18.0",
+      "onFail": "download"
+    }
+  }
+}
