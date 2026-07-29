@@ -18,9 +18,9 @@ vi.mock("./hooks", async (importActual): Promise<typeof import("./hooks")> => {
       return mockedHooksState.store!;
     },
     // can't do ...createBoundHooks(mockedHooksState.store) because it'll close over the store at the time of the mock, and we want to be able to reset it in beforeEach
-    useStore: () => mockedHooksState.store!,
-    useDispatch: () => mockedHooksState.store!.dispatch,
-    useSelector: (selector, isEqual) =>
+    useAppStore: () => mockedHooksState.store!,
+    useAppDispatch: () => mockedHooksState.store!.dispatch,
+    useAppSelector: (selector, isEqual) =>
       useSyncExternalStoreWithSelector(
         // oxlint-disable-next-line typescript/unbound-method
         mockedHooksState.store!.subscribe,

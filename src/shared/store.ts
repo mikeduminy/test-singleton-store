@@ -13,11 +13,12 @@ const counterSlice = createSlice({
   },
   selectors: {
     selectCount: (state) => state.value,
+    selectCountPlus: (state, amount: number) => state.value + amount,
   },
 });
 
 export const { increment, decrement } = counterSlice.actions;
-export const { selectCount } = counterSlice.selectors;
+export const { selectCount, selectCountPlus } = counterSlice.selectors;
 
 const rootReducer = combineSlices(counterSlice);
 

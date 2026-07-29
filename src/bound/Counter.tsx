@@ -1,10 +1,10 @@
 import { CounterDisplay } from "../shared/CounterDisplay";
 import { decrement, increment, selectCount } from "../shared/store";
-import { useDispatch, useSelector } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
 export function Counter() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
 
   return (
     <CounterDisplay
