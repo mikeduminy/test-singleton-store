@@ -1,6 +1,5 @@
 import { defineConfig } from "vite-plus";
 import react from "@vitejs/plugin-react";
-import { playwright } from "vite-plus/test/browser-playwright";
 
 export default defineConfig({
   plugins: [react()],
@@ -15,10 +14,6 @@ export default defineConfig({
   },
   test: {
     setupFiles: ["./test/setup.tsx"],
-    browser: {
-      enabled: true,
-      provider: playwright(),
-      instances: [{ browser: "chromium" }],
-    },
+    environment: "jsdom",
   },
 });
