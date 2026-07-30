@@ -1,9 +1,10 @@
 import { expect, describe, it } from "vite-plus/test";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import { Counter } from "./Counter";
 
-describe("Counter (singleton)", () => {
+describe("Counter (singleton with no mocking)", () => {
   it("should render the counter", () => {
     render(<Counter />);
     expect(screen.getByRole("status")).toHaveTextContent("0");
@@ -16,8 +17,7 @@ describe("Counter (singleton)", () => {
     await user.click(incrementButton);
     expect(count).toHaveTextContent("1");
   });
-  // fails when previous test has been run, we're using the same store and the state is not reset between tests
-  it("should fail to decrement the counter", async () => {
+  it("should decrement the counter", async () => {
     render(<Counter />);
     const user = userEvent.setup();
     const count = screen.getByRole("status");
