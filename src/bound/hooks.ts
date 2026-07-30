@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { makeStore, type RootState, selectCount, selectCountPlus } from "../shared/store";
+import { makeResettableStore, type RootState, selectCount, selectCountPlus } from "../shared/store";
 import { createBoundHooks, createBoundSelectorHooks } from "./bind";
 
-export const store = makeStore();
+export const store = makeResettableStore();
 
 export const {
   useStore: useAppStore,
