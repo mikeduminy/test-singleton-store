@@ -1,14 +1,21 @@
-import { page } from "vite-plus/test/browser";
-import { render, type RenderOptions } from "vitest-browser-react";
+import "@testing-library/jest-dom/vitest";
+import { afterEach } from "vite-plus/test";
+import { cleanup, render, type RenderOptions } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { makeStore, type PreloadedState, type AppStore } from "../src/shared/store";
+import { store } from "../src/bound/hooks";
+
+afterEach(() => {
+  cleanup();
+  store.resetState();
+});
 
 export interface RenderWithProviderOptions extends RenderOptions {
   preloadedState?: PreloadedState;
   store?: AppStore;
 }
 
-export async function renderWithProvider(
+export function renderWithProvider(
   ui: React.ReactElement,
   {
     preloadedState,
@@ -20,21 +27,9 @@ export async function renderWithProvider(
     <Provider store={store}>{children}</Provider>
   );
 
-  const result = await render(ui, { wrapper: Wrapper, ...renderOptions });
+  const result = render(ui, { wrapper: Wrapper, ...renderOptions });
   return {
     ...result,
     store,
   };
 }
-
-// convenient but not required
-
-declare module "vite-plus/test/browser" {
-  export interface BrowserPage {
-    renderWithProvider: typeof renderWithProvider;
-  }
-}
-
-page.extend({
-  renderWithProvider,
-});
